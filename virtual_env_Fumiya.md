@@ -215,7 +215,7 @@ group = vagrant
 ```  
   
 4. 作動  
-( http://192.168.33.19 )にアクセスするとlaravelのwelcome画面にアクセスできる。ログインを実行できれば環境構築完了  
+http://192.168.33.19にアクセスするとlaravelのwelcome画面にアクセスできる。ログインを実行できれば環境構築完了  
 
 ## 気づいたこと、学んだこと  
 設定ファイルの意味がわかればエラーの対処もしやすいのではないかと思いました。  
@@ -223,15 +223,9 @@ group = vagrant
 nginxに変更ができなかったので設定ファイルの方を変更したらうまくいったので今回はvagrantとしてあります。設定ファイルのuser,groupの部分の意味が分かったから気づいたことなので、
 他の箇所もわかっていれば様々なエラーに対応しやすいと思いました。  
 ## 参考サイト  
-[ giztech ]
-( https://giztech.gizumo-inc.work/lesson/18 )  
-[ nginxで、connect() failed (111: Connection refused) while connecting to upstreamってエラーにハマった。 - Qiita ]
-( https://qiita.com/mindlessdoll/items/9dd035a53e4491a8ef9b )  
-[ Laravel4、app/storageのパーミッショントラブル ]
-( https://kore1server.com/261 )  
-[ Vagrantの使い方 - Qiita ]
-( https://qiita.com/IK12_info/items/28ac74bfa92a39e886ef )  
-[ 【Vagrant】vagrantを導入しよう - Qiita ]
-( https://qiita.com/ohuron/items/057b74a42b182b200ae6 )  
-[ Vagrantfileの基本的な書き方｜FKeisuke｜note ]
-( https://note.com/fkeisuke/n/n9259600151c1 )  
+[giztech](https://giztech.gizumo-inc.work/lesson/18)  
+[nginxで、connect() failed (111: Connection refused) while connecting to upstreamってエラーにハマった。 - Qiita](https://qiita.com/mindlessdoll/items/9dd035a53e4491a8ef9b)  
+[Laravel4、app/storageのパーミッショントラブル](https://kore1server.com/261)  
+[Vagrantの使い方 - Qiita](https://qiita.com/IK12_info/items/28ac74bfa92a39e886ef)  
+[【Vagrant】vagrantを導入しよう - Qiita](https://qiita.com/ohuron/items/057b74a42b182b200ae6)  
+[Vagrantfileの基本的な書き方｜FKeisuke｜note](https://note.com/fkeisuke/n/n9259600151c1)  
