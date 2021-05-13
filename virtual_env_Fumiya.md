@@ -140,11 +140,11 @@ mysqlのバージョンが確認できたらインストール完了
 
 次にmysqlに入り、laravelアプリのデータベースを作成する。
 ```  
-sudo cat /var/log/mysqld.log | grep 'temporary password' #パスワードを確認、出力結果の最後の文字列がパスワード 以下の出力ならhogehoge
+sudo cat /var/log/mysqld.log | grep 'temporary password' #パスワードを確認、以下の出力ならhogehoge
 →2017-01-01T00:00:00.000000Z 1 [Note] A temporary password is generated for root@localhost: hogehoge
-mysql -u root -p　#mysqlにログイン
-set password = "新しいパスワード" #パスワードの設定
-create database laravel_app; #データベースの作成　今回はlaravel_appという名前で作成
+mysql -u root -p                              #mysqlにログイン
+set password = "新しいパスワード"             #パスワードの設定
+create database laravel_app;                  #データベースの作成　今回はlaravel_appという名前で作成
 ```  
   
 ### 6.laravelのインストールとログイン機能の実装  
@@ -163,8 +163,8 @@ DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=laravel_app #自分のlaravelアプリ用データベース名
-DB_USERNAME=root #変更
-DB_PASSWORD=password #自分のmysqlパスワード
+DB_USERNAME=root        #変更
+DB_PASSWORD=password    #自分のmysqlパスワード
 ```  
 次に、マイグレーションを実行する。  
 ```  
