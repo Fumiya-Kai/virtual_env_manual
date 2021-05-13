@@ -1,6 +1,6 @@
-#環境構築手順書
+# 環境構築手順書
 
-##使用環境
+## 使用環境
 |項目|環境|
 |:----:|:----:|
 |仮想環境|Vagrant|
@@ -11,7 +11,7 @@
 |フレームワーク|Laravel6.0|
 
 
-##環境構築手順  
+## 環境構築手順  
 1.ディレクトリ作成  
 2.Vagrantfileの編集  
 3.プラグインのインストール  
@@ -22,7 +22,7 @@
 8.laravelのインストール  
 9.nginxのインストール
 
-##1.ディレクトリ作成  
+## 1.ディレクトリ作成  
 mkdirコマンドで作業ディレクトリを作成する。今回はvagrant_dirという名前で作成。  
 ```
 mkdir vagrant_dir  
@@ -43,7 +43,7 @@ vagrantを初期化するコマンド。
 box名を指定することで、Vagrantfileにbox名が設定された状態で出力される。  
 ***  
   
-##2.Vagarantfileの編集  
+## 2.Vagarantfileの編集  
 次にVagrantfileの編集をして、ポート番号やipアドレスの設定や共有フォルダの同期の設定を行う。  
 ```
 config.vm.network "forwarded_port", guest: 80, host: 8080  
@@ -63,9 +63,9 @@ config.vm.synced_folder "./", "/vagrant", type:"virtualbox"
 ホストOSとゲストOSで同期するフォルダの設定。今回の場合、ホストOS側の作業ディレクトリとゲストOS側の/vagrantを同期。第3引数以降はオプションで、typeは同期フォルダタイプ。
 これにより、virtualboxの機能でフォルダを同期できる。  
 ***  
-##3.必要なものをインストール  
+## 3.必要なものをインストール  
 次に必要なものをインストールする。  
-###1.プラグインのインストール  
+### 1.プラグインのインストール  
 以下のコマンドでプラグインをインストールできる。（今回必要なのはvagrant-vbguest、vagrant-vbguestはホストOSとゲストOSでGuestAdditionsのバージョンを合わせ、様々な機能がホストとゲストで統合的に扱えるようになる）  
 vagrant plugin listでインストール完了か確認できる。  
 ``` 
@@ -81,7 +81,7 @@ vagrant ssh-configの情報に基づいてvagrantにログイン。
 vagrant ssh  
 ```  
   
-###2.gitなどの開発に必要なツールを一括でインストール  
+### 2.gitなどの開発に必要なツールを一括でインストール  
 以下のコマンドで様々なツールを一括でインストールする。
 ```  
 sudo yum -y groupinstall "development tools"  
@@ -92,7 +92,7 @@ sudoはrootユーザーの権限を借りるコマンド。許可がなくて実
 yumはcentOSのパッケージ管理ツール -yをつけるとコマンド実行時の質問に自動でyesと答える。  
 ***  
   
-###3.phpをインストール  
+### 3.phpをインストール  
 以下のコマンドを順に実行してphpをインストールする。  
 ```  
 sudo yum -y install epel-release wget  
@@ -108,7 +108,7 @@ rpmはyumと同じくcentOSのパッケージ管理ツールだが、依存関�
 4つ目のコマンドで、php7.3と拡張モジュールをインストールしている。  
 ***  
   
-###4.composerのインストール  
+### 4.composerのインストール  
 以下のコマンドを順に実行しcomposerをインストールする。  
 ```  
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"  
@@ -123,7 +123,7 @@ composerのバージョンが確認できたらインストール完了
 composerはphpのパッケージ管理ツール  
 ***  
   
-###5.mysqlのインストール  
+### 5.mysqlのインストール  
 以下のコマンドを順に実行しmysqlをインストールする。  
 ```  
 sudo wget https://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm  
@@ -133,13 +133,13 @@ mysql --version
 ```  
 mysqlのバージョンが確認できたらインストール完了  
   
-###6.laravelのインストール  
+### 6.laravelのインストール  
 ホストOSでvagrantの作業ディレクトリに移動し、以下を実行（今回はlaravel_appがプロジェクト名）  
 ```  
 composer create-project laravel/laravel --prefer-dist laravel_app 5.7を実行  
 ```  
   
-###7.nginxのインストール  
+### 7.nginxのインストール  
 ゲストOSに戻り、以下のファイルを作成  
 ```  
 sudo vi /etc/yum.repos.d/nginx.repo  
@@ -157,8 +157,8 @@ enabled=1
 sudo yum install -y nginx  
 ```  
   
-##3.設定  
-###laravelを動かすための設定  
+## 3.設定  
+### laravelを動かすための設定  
 ```  
 sudo vi /etc/nginx/conf.d/default.conf   
 ```  
@@ -193,7 +193,7 @@ server {
     }  
 ```  
   
-###php-fpmの設定  
+### php-fpmの設定  
 ```  
 sudo vi /etc/php-fpm.d/www.conf
 ```  
@@ -209,12 +209,12 @@ group = apache
 group = vagrant
 ```  
   
-##気づいたこと、学んだこと  
+## 気づいたこと、学んだこと  
 設定ファイルの意味がわかればエラーの対処もしやすいのではないかと思いました。  
 もともとphp-fpmの設定でuser=nginx、group=nginxとしていましたが、セッションが変わるたびに権限のエラーが起こり、該当のファイルの権限を調べるとvagrantとなっており
 nginxに変更ができなかったので設定ファイルの方を変更したらうまくいったので今回はvagrantとしてあります。設定ファイルのuser,groupの部分の意味が分かったから気づいたことなので、
 他の箇所もわかっていれば様々なエラーに対応しやすいと思いました。  
-##参考サイト  
+## 参考サイト  
 [giztech]
 (https://giztech.gizumo-inc.work/lesson/18)  
 [nginxで、connect() failed (111: Connection refused) while connecting to upstreamってエラーにハマった。 - Qiita]
