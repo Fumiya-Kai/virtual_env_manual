@@ -32,12 +32,12 @@ mkdir vagrant_dir
 vagrant init centos/7  
 ```
 成功すると以下の文章が出る  
->A `Vagrantfile` has been placed in this directory. You are now  
->ready to `vagrant up` your first virtual environment! Please read  
+>A \`Vagrantfile\` has been placed in this directory. You are now  
+>ready to \`vagrant up\` your first virtual environment! Please read  
 >the comments in the Vagrantfile as well as documentation on  
->`vagrantup.com` for more information on using Vagrant.  
+>\`vagrantup.com\` for more information on using Vagrant.  
 ***  
-vagrant init box名  
+`vagrant init box名`  
 vagrantを初期化するコマンド。  
 これによりVagrantfileというファイルが作業ディレクトリ内に作られる。  
 box名を指定することで、Vagrantfileにbox名が設定された状態で出力される。  
@@ -55,11 +55,11 @@ config.vm.synced_folder "../data", "/vagrant_data"
 config.vm.synced_folder "./", "/vagrant", type:"virtualbox"  
 ```
 ***  
-config.vm.network "forwarded_port", guest: 80, host: 8080  
+`config.vm.network "forwarded_port", guest: 80, host: 8080`  
 これはホストOSへの通信をゲストOSに転送するときのポート番号の設定  
-config.vm.network "private_network", ip: "192.168.33.10"  
+`config.vm.network "private_network", ip: "192.168.33.10"`  
 これは構築するサーバーのプライベートネットワーク上のipアドレスの設定。今回の場合、192.168.33.19  
-config.vm.synced_folder "./", "/vagrant", type:"virtualbox"  
+`config.vm.synced_folder "./", "/vagrant", type:"virtualbox"`  
 ホストOSとゲストOSで同期するフォルダの設定。今回の場合、ホストOS側の作業ディレクトリとゲストOS側の/vagrantを同期。第3引数以降はオプションで、typeは同期フォルダタイプ。
 これにより、virtualboxの機能でフォルダを同期できる。  
 ***  
@@ -87,9 +87,9 @@ vagrant ssh
 sudo yum -y groupinstall "development tools"  
 ```  
 ***  
-groupinstallは複数のパッケージを一括でインストールする。  
-sudoはrootユーザーの権限を借りるコマンド。許可がなくて実行できない時はこのコマンドで実行すると実行できる。  
-yumはcentOSのパッケージ管理ツール -yをつけるとコマンド実行時の質問に自動でyesと答える。  
+`groupinstall`は複数のパッケージを一括でインストールする。  
+`sudo`はrootユーザーの権限を借りるコマンド。許可がなくて実行できない時はこのコマンドで実行すると実行できる。  
+`yum`はcentOSのパッケージ管理ツール -yをつけるとコマンド実行時の質問に自動でyesと答える。  
 ***  
   
 ### 3.phpをインストール  
@@ -103,8 +103,8 @@ php -v
 ```  
 phpのバージョンが確認できたらインストール完了  
 ***  
-wgetは指定したURLのファイルをダウンロードする。
-rpmはyumと同じくcentOSのパッケージ管理ツールだが、依存関係の解決、自動更新などの機能はrpmにはない。  
+`wget`は指定したURLのファイルをダウンロードする。
+`rpm`は`yum`と同じくcentOSのパッケージ管理ツールだが、依存関係の解決、自動更新などの機能はrpmにはない。  
 4つ目のコマンドで、php7.3と拡張モジュールをインストールしている。  
 ***  
   
