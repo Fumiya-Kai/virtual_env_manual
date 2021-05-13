@@ -12,15 +12,20 @@
 
 
 ## 環境構築手順  
-1.ディレクトリ作成  
-2.Vagrantfileの編集  
-3.プラグインのインストール  
-4.開発ツールを一括インストール  
-5.phpのインストール  
-6.composerのインストール  
-7.mysqlのインストール  
-8.laravelのインストール  
-9.nginxのインストール
+1. ディレクトリ作成  
+2. Vagrantfileの編集
+3. 必要なもののインストール    
+	1. プラグインのインストール  
+	2. 開発ツールを一括インストール  
+	3. phpのインストール  
+	4. composerのインストール  
+	5. mysqlのインストール  
+	6. laravelのインストール  
+	7. nginxのインストール  
+4. 設定  
+	1. nginxの設定  
+	2. php-fpmの設定  
+5. 作動  
 
 ## 1.ディレクトリ作成  
 mkdirコマンドで作業ディレクトリを作成する。今回はvagrant_dirという名前で作成。  
@@ -209,21 +214,24 @@ group = apache
 group = vagrant
 ```  
   
+4. 作動  
+( http://192.168.33.19 )にアクセスするとlaravelのwelcome画面にアクセスできる。ログインを実行できれば環境構築完了  
+
 ## 気づいたこと、学んだこと  
 設定ファイルの意味がわかればエラーの対処もしやすいのではないかと思いました。  
 もともとphp-fpmの設定でuser=nginx、group=nginxとしていましたが、セッションが変わるたびに権限のエラーが起こり、該当のファイルの権限を調べるとvagrantとなっており
 nginxに変更ができなかったので設定ファイルの方を変更したらうまくいったので今回はvagrantとしてあります。設定ファイルのuser,groupの部分の意味が分かったから気づいたことなので、
 他の箇所もわかっていれば様々なエラーに対応しやすいと思いました。  
 ## 参考サイト  
-[giztech]
-(https://giztech.gizumo-inc.work/lesson/18)  
-[nginxで、connect() failed (111: Connection refused) while connecting to upstreamってエラーにハマった。 - Qiita]
-(https://qiita.com/mindlessdoll/items/9dd035a53e4491a8ef9b)  
-[Laravel4、app/storageのパーミッショントラブル]
-(https://kore1server.com/261)  
-[Vagrantの使い方 - Qiita]
-(https://qiita.com/IK12_info/items/28ac74bfa92a39e886ef)  
-[【Vagrant】vagrantを導入しよう - Qiita]
-(https://qiita.com/ohuron/items/057b74a42b182b200ae6)  
-[Vagrantfileの基本的な書き方｜FKeisuke｜note]
-(https://note.com/fkeisuke/n/n9259600151c1)  
+[ giztech ]
+( https://giztech.gizumo-inc.work/lesson/18 )  
+[ nginxで、connect() failed (111: Connection refused) while connecting to upstreamってエラーにハマった。 - Qiita ]
+( https://qiita.com/mindlessdoll/items/9dd035a53e4491a8ef9b )  
+[ Laravel4、app/storageのパーミッショントラブル ]
+( https://kore1server.com/261 )  
+[ Vagrantの使い方 - Qiita ]
+( https://qiita.com/IK12_info/items/28ac74bfa92a39e886ef )  
+[ 【Vagrant】vagrantを導入しよう - Qiita ]
+( https://qiita.com/ohuron/items/057b74a42b182b200ae6 )  
+[ Vagrantfileの基本的な書き方｜FKeisuke｜note ]
+( https://note.com/fkeisuke/n/n9259600151c1 )  
