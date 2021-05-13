@@ -141,7 +141,7 @@ mysqlのバージョンが確認できたらインストール完了
 次にmysqlに入り、laravelアプリのデータベースを作成する。
 ```  
 sudo cat /var/log/mysqld.log | grep 'temporary password' #パスワードを確認、以下の出力ならhogehoge
-*出力:2017-01-01T00:00:00.000000Z 1 [Note] A temporary password is generated for root@localhost: hogehoge*
+* 出力:2017-01-01T00:00:00.000000Z 1 [Note] A temporary password is generated for root@localhost: hogehoge *
 
 mysql -u root -p                              #mysqlにログイン
 set password = "新しいパスワード"             #パスワードの設定
